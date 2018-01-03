@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller;
+package com.example.baina.androidremotecontroller.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.baina.androidremotecontroller.R;
+import com.example.baina.androidremotecontroller.model.AppInfo;
 
 import java.util.List;
 

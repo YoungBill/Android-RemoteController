@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller;
+package com.example.baina.androidremotecontroller.service;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

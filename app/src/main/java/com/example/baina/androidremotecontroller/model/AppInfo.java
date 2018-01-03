@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller;
+package com.example.baina.androidremotecontroller.model;
 
 import android.graphics.drawable.Drawable;
 

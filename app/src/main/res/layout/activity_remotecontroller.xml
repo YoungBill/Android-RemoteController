@@ -3,30 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
-
+    android:gravity="center"
+    tools:context=".activity.RemoteControllerActivity">
 
     <Button
-        android:id="@+id/showAllSupportAudioAppsBt"
+        android:id="@+id/previousBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="50dp"
         android:onClick="OnClick"
-        android:text="all support audio app"
-        android:textAllCaps="false"
+        android:text="previous"
         android:textSize="12sp" />
 
     <Button
-        android:id="@+id/remoteControllerBt"
+        android:id="@+id/playPauseBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/showAllSupportAudioAppsBt"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="50dp"
+        android:layout_toRightOf="@id/previousBt"
         android:onClick="OnClick"
-        android:text="remoteControllerTest"
-        android:textAllCaps="false"
+        android:text="play/pause"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/nextBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/playPauseBt"
+        android:onClick="OnClick"
+        android:text="next"
         android:textSize="12sp" />
 
 </RelativeLayout>
