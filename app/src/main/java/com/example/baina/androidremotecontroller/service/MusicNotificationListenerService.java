@@ -1,10 +1,7 @@
 package com.example.baina.androidremotecontroller.service;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.AudioManager;
-import android.media.MediaMetadataRetriever;
 import android.media.RemoteController;
 import android.os.Binder;
 import android.os.IBinder;
@@ -25,7 +22,7 @@ public class MusicNotificationListenerService extends NotificationListenerServic
 
     private RemoteController mRemoteController;
     private RCBinder mBinder = new RCBinder();
-    private int mState;
+    private RemoteController.OnClientUpdateListener mExternalClientUpdateListener;
 
     @Override
     public void onCreate() {
@@ -38,7 +35,11 @@ public class MusicNotificationListenerService extends NotificationListenerServic
         return mBinder;
     }
 
-    public void registerRemoteController() {
+    public void setExternalClientUpdateListener(RemoteController.OnClientUpdateListener externalClientUpdateListener) {
+        mExternalClientUpdateListener = externalClientUpdateListener;
+    }
+
+    private void registerRemoteController() {
         mRemoteController = new RemoteController(this, this);
         boolean registered;
         try {
@@ -60,10 +61,6 @@ public class MusicNotificationListenerService extends NotificationListenerServic
 
     public void onNotificationPosted(StatusBarNotification sbn) {
         Log.e(TAG, "onNotificationPosted...");
-        if (sbn.getPackageName().contains("music")) {
-            Log.e(TAG, "音乐软件正在播放...");
-            Log.e(TAG, sbn.getPackageName());
-        }
     }
 
     @Override
@@ -74,44 +71,32 @@ public class MusicNotificationListenerService extends NotificationListenerServic
 
     @Override
     public void onClientChange(boolean clearing) {
-
+        if (mExternalClientUpdateListener != null)
+            mExternalClientUpdateListener.onClientChange(clearing);
     }
 
     @Override
     public void onClientPlaybackStateUpdate(int state) {
-
+        if (mExternalClientUpdateListener != null)
+            mExternalClientUpdateListener.onClientPlaybackStateUpdate(state);
     }
 
     @Override
     public void onClientPlaybackStateUpdate(int state, long stateChangeTimeMs, long currentPosMs, float speed) {
-        mState = state;
+        if (mExternalClientUpdateListener != null)
+            mExternalClientUpdateListener.onClientPlaybackStateUpdate(state, stateChangeTimeMs, currentPosMs, speed);
     }
 
     @Override
     public void onClientTransportControlUpdate(int transportControlFlags) {
-
+        if (mExternalClientUpdateListener != null)
+            mExternalClientUpdateListener.onClientTransportControlUpdate(transportControlFlags);
     }
 
     @Override
     public void onClientMetadataUpdate(RemoteController.MetadataEditor metadataEditor) {
-        String artist = metadataEditor.getString(MediaMetadataRetriever.METADATA_KEY_ARTIST, "null");
-        String album = metadataEditor.getString(MediaMetadataRetriever.METADATA_KEY_ALBUM, "null");
-        String title = metadataEditor.getString(MediaMetadataRetriever.METADATA_KEY_TITLE, "null");
-        Long duration = metadataEditor.getLong(MediaMetadataRetriever.METADATA_KEY_DURATION, -1);
-        Bitmap defaultCover = BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_menu_compass);
-        Bitmap bitmap = metadataEditor.getBitmap(RemoteController.MetadataEditor.BITMAP_KEY_ARTWORK, defaultCover);
-//        setCoverImage(bitmap);
-//
-//        setContentString(artist);
-//
-//        setTitleString(title);
-        Log.e(TAG, "artist:" + artist
-
-                + "album:" + album
-
-                + "title:" + title
-
-                + "duration:" + duration);
+        if (mExternalClientUpdateListener != null)
+            mExternalClientUpdateListener.onClientMetadataUpdate(metadataEditor);
     }
 
     public boolean sendMusicKeyEvent(int keyCode) {
@@ -123,10 +108,6 @@ public class MusicNotificationListenerService extends NotificationListenerServic
             return down && up;
         }
         return false;
-    }
-
-    public int getState() {
-        return mState;
     }
 
     public class RCBinder extends Binder {

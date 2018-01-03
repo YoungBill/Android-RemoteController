@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.baina.androidremotecontroller.model.AppInfo;
 import com.example.baina.androidremotecontroller.R;
@@ -54,6 +57,14 @@ public class AllSupportAudioAppActivity extends Activity {
             }
             mAdapter = new SupportMusicPlayerAdapter(AllSupportAudioAppActivity.this, mAppInfoList);
             mAppListView.setAdapter(mAdapter);
+            mAppListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mAdapter.setCheckedPosition(position);
+                    mAdapter.notifyDataSetChanged();
+                    Toast.makeText(AllSupportAudioAppActivity.this, "你选择了:" + mAppInfoList.get(position).getAppLabel(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

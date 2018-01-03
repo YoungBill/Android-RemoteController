@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:background="#000066"
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 
@@ -20,4 +21,15 @@
         android:layout_toRightOf="@id/appIconIv"
         android:textColor="#000000"
         android:textSize="14sp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/supportmusicplayer_checkbox"
+        android:button="@null"
+        android:clickable="false"
+        android:focusable="false" />
 </RelativeLayout>

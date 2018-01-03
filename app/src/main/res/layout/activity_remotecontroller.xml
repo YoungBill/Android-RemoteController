@@ -6,30 +6,9 @@
     android:gravity="center"
     tools:context=".activity.RemoteControllerActivity">
 
-    <Button
-        android:id="@+id/previousBt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="OnClick"
-        android:text="previous"
-        android:textSize="12sp" />
-
-    <Button
-        android:id="@+id/playPauseBt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/previousBt"
-        android:onClick="OnClick"
-        android:text="play/pause"
-        android:textSize="12sp" />
-
-    <Button
-        android:id="@+id/nextBt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/playPauseBt"
-        android:onClick="OnClick"
-        android:text="next"
-        android:textSize="12sp" />
+    <com.example.baina.androidremotecontroller.view.MusicControlView
+        android:id="@+id/controlView"
+        android:layout_width="148dp"
+        android:layout_height="148dp" />
 
 </RelativeLayout>

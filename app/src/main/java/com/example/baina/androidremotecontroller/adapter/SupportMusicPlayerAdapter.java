@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class SupportMusicPlayerAdapter extends BaseAdapter {
     private Context mContext;
     private List<AppInfo> mAppInfoList;
     private LayoutInflater mInflater;
+    private int mCheckedPosition = -1;
 
     public SupportMusicPlayerAdapter(Context context, List<AppInfo> appInfos) {
         mContext = context;
@@ -52,6 +54,7 @@ public class SupportMusicPlayerAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.appIconIv = convertView.findViewById(R.id.appIconIv);
             holder.appLabelTv = convertView.findViewById(R.id.appLabelTv);
+            holder.checkBox = convertView.findViewById(R.id.checkBox);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -59,11 +62,21 @@ public class SupportMusicPlayerAdapter extends BaseAdapter {
         AppInfo appInfo = mAppInfoList.get(position);
         holder.appIconIv.setImageDrawable(appInfo.getAppIcon());
         holder.appLabelTv.setText(appInfo.getAppLabel());
+        if (mCheckedPosition == position) {
+            holder.checkBox.setChecked(true);
+        } else {
+            holder.checkBox.setChecked(false);
+        }
         return convertView;
+    }
+
+    public void setCheckedPosition(int checkedPosition) {
+        mCheckedPosition = checkedPosition;
     }
 
     private class ViewHolder {
         ImageView appIconIv;
         TextView appLabelTv;
+        CheckBox checkBox;
     }
 }
