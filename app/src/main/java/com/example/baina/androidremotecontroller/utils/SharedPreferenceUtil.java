@@ -11,7 +11,7 @@ public class SharedPreferenceUtil {
 
     public static void putKeyInt(String key, int putValue) {
         SharedPreferences settingPre = mContext.getSharedPreferences(key, Context.MODE_PRIVATE);
-        settingPre.edit().putInt(key, putValue).commit();
+        settingPre.edit().putInt(key, putValue).apply();
     }
 
     public static int getKeyInt(String key, int defaultValue) {
@@ -22,7 +22,7 @@ public class SharedPreferenceUtil {
 
     public static void putKeyLong(String key, long putValue) {
         SharedPreferences settingPre = mContext.getSharedPreferences(key, Context.MODE_PRIVATE);
-        settingPre.edit().putLong(key, putValue).commit();
+        settingPre.edit().putLong(key, putValue).apply();
 
     }
 
@@ -33,7 +33,7 @@ public class SharedPreferenceUtil {
 
     public static void putKeyBoolean(String key, boolean putValue) {
         SharedPreferences settingPre = mContext.getSharedPreferences(key, Context.MODE_PRIVATE);
-        settingPre.edit().putBoolean(key, putValue).commit();
+        settingPre.edit().putBoolean(key, putValue).apply();
     }
 
     public static boolean getKeyBoolean(String key, boolean defaultValue) {
@@ -43,7 +43,7 @@ public class SharedPreferenceUtil {
 
     public static void putKeyString(String key, String putValue) {
         SharedPreferences settingPre = mContext.getSharedPreferences(key, Context.MODE_PRIVATE);
-        settingPre.edit().putString(key, putValue).commit();
+        settingPre.edit().putString(key, putValue).apply();
     }
 
     public static String getKeyString(String key, String defaultValue) {

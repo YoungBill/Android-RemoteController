@@ -5,14 +5,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.baina.androidremotecontroller.model.AppInfo;
 import com.example.baina.androidremotecontroller.R;
 import com.example.baina.androidremotecontroller.adapter.SupportMusicPlayerAdapter;
+import com.example.baina.androidremotecontroller.utils.Contants;
+import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +64,9 @@ public class AllSupportAudioAppActivity extends Activity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     mAdapter.setCheckedPosition(position);
                     mAdapter.notifyDataSetChanged();
-                    Toast.makeText(AllSupportAudioAppActivity.this, "你选择了:" + mAppInfoList.get(position).getAppLabel(), Toast.LENGTH_SHORT).show();
+                    AppInfo appInfo = mAppInfoList.get(position);
+                    Log.d(TAG, "你选择了:" + appInfo.getAppLabel());
+                    SharedPreferenceUtil.putKeyString(Contants.MUSICPLAYER, appInfo.getAppPkg());
                 }
             });
         }

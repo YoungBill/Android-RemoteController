@@ -1,6 +1,9 @@
 package com.example.baina.androidremotecontroller.view;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -23,6 +26,15 @@ import static android.content.Context.AUDIO_SERVICE;
 
 public class MusicControlView extends RelativeLayout {
 
+    //STATE_XX是音乐控制中心对应的三种状态
+    //状态１，没有选择播放器
+    public static final int STATE_NOMUSICPLAYER = 0x001;
+    //状态２，已经选择播放器，但是没有音乐播放信息
+    public static final int STATE_NOMUSICDATA = 0x002;
+    //状态３，已经选择播放器，并且有音乐播放信息
+    public static final int STATE_MUSICDATA = 0x003;
+
+    private int mMusicControlState;
     private Context mContext;
     private ImageView mMusicCoverIv;
     private TextView mMusicPlayerTv;
@@ -68,19 +80,27 @@ public class MusicControlView extends RelativeLayout {
         initListener();
         //初始化播放/暂停按钮状态信息
         // TODO: 18-1-3 这里可以改进，目前只能得到是否在播放的状态信息，未来希望改进，能拿到所有正在操作的音乐信息
-        if (((AudioManager) mContext.getSystemService(AUDIO_SERVICE)).isMusicActive()) {
-            mPlayPauseIb.setBackgroundResource(R.mipmap.pause);
-        } else {
-            mPlayPauseIb.setBackgroundResource(R.mipmap.play);
-        }
+//        if (((AudioManager) mContext.getSystemService(AUDIO_SERVICE)).isMusicActive()) {
+//            mPlayPauseIb.setBackgroundResource(R.mipmap.pause);
+//        } else {
+//            mPlayPauseIb.setBackgroundResource(R.mipmap.play);
+//        }
     }
 
     private void initListener() {
+        mMusicCoverIv.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mMusicControlClickListener != null) {
+                    mMusicControlClickListener.OnClickMusicCover(mMusicControlState);
+                }
+            }
+        });
         mPreviousIb.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mMusicControlClickListener != null) {
-                    mMusicControlClickListener.OnClickPrevious();
+                    mMusicControlClickListener.OnClickPrevious(mMusicControlState);
                 }
             }
         });
@@ -88,14 +108,14 @@ public class MusicControlView extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 if (mMusicControlClickListener != null)
-                    mMusicControlClickListener.OnClickPlayPause();
+                    mMusicControlClickListener.OnClickPlayPause(mMusicControlState);
             }
         });
         mNextIb.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mMusicControlClickListener != null)
-                    mMusicControlClickListener.OnClickNext();
+                    mMusicControlClickListener.OnClickNext(mMusicControlState);
             }
         });
     }
@@ -106,15 +126,20 @@ public class MusicControlView extends RelativeLayout {
         mMusicPlayerTv.setText("choose a music player");
         mMusicTitleTv.setVisibility(GONE);
         mMusicArtistTv.setVisibility(GONE);
+        mMusicControlState = STATE_NOMUSICPLAYER;
     }
 
-    //没有歌曲信息，此时不会只会显示播放器名称
-    public void onNoMusicData(AppInfo appInfo) {
-        mMusicCoverIv.setBackground(appInfo.getAppIcon());
+    //没有歌曲信息，此时只会显示播放器名称
+    public void onNoMusicData(ApplicationInfo applicationInfo) {
+        //这里放这句判断，主要是RemoteControllerActivity在onResume的时候，有个状态操作，如果此时有歌曲信息，则不走后面的逻辑
+        if (mMusicControlState == STATE_MUSICDATA)
+            return;
+        mMusicCoverIv.setImageDrawable(applicationInfo.loadIcon(mContext.getPackageManager()));
         mMusicPlayerTv.setVisibility(VISIBLE);
-        mMusicPlayerTv.setText(appInfo.getAppLabel());
+        mMusicPlayerTv.setText(applicationInfo.loadLabel(mContext.getPackageManager()));
         mMusicTitleTv.setVisibility(GONE);
         mMusicArtistTv.setVisibility(GONE);
+        mMusicControlState = STATE_NOMUSICDATA;
     }
 
     //更新音乐信息
@@ -125,10 +150,12 @@ public class MusicControlView extends RelativeLayout {
         mMusicArtistTv.setVisibility(VISIBLE);
         mMusicTitleTv.setText(music.getTitle());
         mMusicArtistTv.setText(music.getArtist());
+        mMusicControlState = STATE_MUSICDATA;
     }
 
-    //更新音乐信息
+    //更新播放/暂停按钮状态
     public void onClientPlaybackStateUpdate(int state) {
+        mMusicControlState = STATE_MUSICDATA;
         switch (state) {
             case 2:
                 //paused
@@ -142,12 +169,18 @@ public class MusicControlView extends RelativeLayout {
         }
     }
 
-
     public interface OnMusicControlClickListener {
-        void OnClickPlayPause();
 
-        void OnClickPrevious();
+        //点击音乐封面
+        void OnClickMusicCover(int musicControlState);
 
-        void OnClickNext();
+        //点击播放/暂停
+        void OnClickPlayPause(int musicControlState);
+
+        //点击上一曲
+        void OnClickPrevious(int musicControlState);
+
+        //点击下一曲
+        void OnClickNext(int musicControlState);
     }
 }

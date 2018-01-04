@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.baina.androidremotecontroller.R;
 import com.example.baina.androidremotecontroller.model.AppInfo;
+import com.example.baina.androidremotecontroller.utils.Contants;
+import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 
 import java.util.List;
 
@@ -62,6 +64,8 @@ public class SupportMusicPlayerAdapter extends BaseAdapter {
         AppInfo appInfo = mAppInfoList.get(position);
         holder.appIconIv.setImageDrawable(appInfo.getAppIcon());
         holder.appLabelTv.setText(appInfo.getAppLabel());
+        if (appInfo.getAppPkg().equals(SharedPreferenceUtil.getKeyString(Contants.MUSICPLAYER, null)))
+            mCheckedPosition = position;
         if (mCheckedPosition == position) {
             holder.checkBox.setChecked(true);
         } else {
