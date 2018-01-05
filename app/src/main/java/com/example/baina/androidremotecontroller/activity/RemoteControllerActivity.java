@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.example.baina.androidremotecontroller.model.Music;
 import com.example.baina.androidremotecontroller.service.MusicNotificationListenerService;
 import com.example.baina.androidremotecontroller.R;
-import com.example.baina.androidremotecontroller.utils.Contants;
+import com.example.baina.androidremotecontroller.utils.Constants;
 import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 import com.example.baina.androidremotecontroller.view.MusicControlView;
 
@@ -52,7 +52,7 @@ public class RemoteControllerActivity extends Activity implements RemoteControll
                         break;
                     case MusicControlView.STATE_NOMUSICDATA:
                     case MusicControlView.STATE_MUSICDATA:
-                        String appPkg = SharedPreferenceUtil.getKeyString(Contants.MUSICPLAYER, null);
+                        String appPkg = SharedPreferenceUtil.getKeyString(Constants.MUSICPLAYER, null);
                         startApp(appPkg);
                         break;
                 }
@@ -65,7 +65,7 @@ public class RemoteControllerActivity extends Activity implements RemoteControll
                         startActivity(new Intent("com.baina.allsupportaudioapp"));
                         break;
                     case MusicControlView.STATE_NOMUSICDATA:
-                        String appPkg = SharedPreferenceUtil.getKeyString(Contants.MUSICPLAYER, null);
+                        String appPkg = SharedPreferenceUtil.getKeyString(Constants.MUSICPLAYER, null);
                         startApp(appPkg);
                         break;
                     case MusicControlView.STATE_MUSICDATA:
@@ -124,7 +124,7 @@ public class RemoteControllerActivity extends Activity implements RemoteControll
             }
         }, Context.BIND_AUTO_CREATE);
         //初始化MusicControlView相关
-        String appPkg = SharedPreferenceUtil.getKeyString(Contants.MUSICPLAYER, null);
+        String appPkg = SharedPreferenceUtil.getKeyString(Constants.MUSICPLAYER, null);
         if (TextUtils.isEmpty(appPkg)) {
             mMusicControlView.onNoMusicPlayer();
         } else {

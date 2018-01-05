@@ -2,9 +2,6 @@ package com.example.baina.androidremotecontroller.view;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.media.AudioManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.baina.androidremotecontroller.R;
-import com.example.baina.androidremotecontroller.model.AppInfo;
 import com.example.baina.androidremotecontroller.model.Music;
-
-import static android.content.Context.AUDIO_SERVICE;
 
 /**
  * Created by baina on 18-1-3.
  * 音乐控制view
+ * 给调用者预留有接口
  */
 
 public class MusicControlView extends RelativeLayout {

@@ -27,6 +27,7 @@
         </activity>
 
         <activity android:name=".activity.RemoteControllerActivity" />
+        <activity android:name=".activity.TestMusicControlViewActivity" />
 
         <service
             android:name=".service.MusicNotificationListenerService"

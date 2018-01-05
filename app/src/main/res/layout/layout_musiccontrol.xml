@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#dd000000">
+    android:background="@drawable/music_center_bg">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/musicCoverIv"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:background="@mipmap/icon_music" />
+        android:src="@mipmap/icon_music" />
 
     <RelativeLayout
         android:id="@+id/middleRl"

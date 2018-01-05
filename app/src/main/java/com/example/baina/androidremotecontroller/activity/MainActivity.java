@@ -25,6 +25,9 @@ public class MainActivity extends Activity {
             case R.id.remoteControllerBt:
                 startActivity(new Intent(MainActivity.this, RemoteControllerActivity.class));
                 break;
+            case R.id.NewMusicControlViewBt:
+                startActivity(new Intent(MainActivity.this, TestMusicControlViewActivity.class));
+                break;
         }
     }
 }

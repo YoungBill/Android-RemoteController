@@ -29,4 +29,16 @@
         android:textAllCaps="false"
         android:textSize="12sp" />
 
+    <Button
+        android:id="@+id/NewMusicControlViewBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/remoteControllerBt"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
+        android:onClick="OnClick"
+        android:text="NewMusicControlViewTest"
+        android:textAllCaps="false"
+        android:textSize="12sp" />
+
 </RelativeLayout>

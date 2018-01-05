@@ -13,7 +13,7 @@ import android.widget.ListView;
 import com.example.baina.androidremotecontroller.model.AppInfo;
 import com.example.baina.androidremotecontroller.R;
 import com.example.baina.androidremotecontroller.adapter.SupportMusicPlayerAdapter;
-import com.example.baina.androidremotecontroller.utils.Contants;
+import com.example.baina.androidremotecontroller.utils.Constants;
 import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;
@@ -66,7 +66,7 @@ public class AllSupportAudioAppActivity extends Activity {
                     mAdapter.notifyDataSetChanged();
                     AppInfo appInfo = mAppInfoList.get(position);
                     Log.d(TAG, "你选择了:" + appInfo.getAppLabel());
-                    SharedPreferenceUtil.putKeyString(Contants.MUSICPLAYER, appInfo.getAppPkg());
+                    SharedPreferenceUtil.putKeyString(Constants.MUSICPLAYER, appInfo.getAppPkg());
                 }
             });
         }
