@@ -25,9 +25,9 @@ Before we understand the project we need to find out two knowledge points:
 2, all the music player App, they will have a permanent notice Notification column to display some of the current song information on the reception of music information, here refers to receiving albums, artist album covers, etc., then how to get it One way is by reflection, but less universal. In Android API 19, Google provided us RemoteController.
 <br/>
 Through the above knowledge point, we can get a variety of music information of third-party music player App, and control the third-party music player.
-<br/>
-<br/>
-<br/>
+
+
+
 ## preview
 ![Alt text](Android-RemoteController/Screenshots/Screenshot_2018-01-07-14-23-41-900_com.example.baina.androidremotecontroller.png)
 
