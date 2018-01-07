@@ -19,7 +19,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/appIconIv"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="14sp" />
 
     <CheckBox

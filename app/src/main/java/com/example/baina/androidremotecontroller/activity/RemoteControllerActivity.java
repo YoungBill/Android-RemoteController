@@ -13,7 +13,7 @@ import android.media.MediaMetadataRetriever;
 import android.media.RemoteController;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.provider.Settings;
+import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,6 +25,8 @@ import com.example.baina.androidremotecontroller.R;
 import com.example.baina.androidremotecontroller.utils.Constants;
 import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 import com.example.baina.androidremotecontroller.view.MusicControlView;
+
+import java.util.Set;
 
 /**
  * Created by baina on 18-1-3.
@@ -104,25 +106,24 @@ public class RemoteControllerActivity extends Activity implements RemoteControll
     protected void onResume() {
         super.onResume();
         //获取通知相关权限
-        String string = Settings.Secure.getString(getContentResolver(), "enabled_notification_listeners");
-        if (!string.contains(MusicNotificationListenerService.class.getName())) {
+        if (!isNotificationListenerServiceEnabled(this)) {
             startActivity(new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
             Toast.makeText(RemoteControllerActivity.this, "请授予通知使用权限", Toast.LENGTH_SHORT).show();
-            return;
+        } else {
+            bindService(new Intent(RemoteControllerActivity.this, MusicNotificationListenerService.class), new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName name, IBinder service) {
+                    MusicNotificationListenerService.RCBinder rcBinder = (MusicNotificationListenerService.RCBinder) service;
+                    mNotificationListenerService = rcBinder.getService();
+                    mNotificationListenerService.setExternalClientUpdateListener(RemoteControllerActivity.this);
+                }
+
+                @Override
+                public void onServiceDisconnected(ComponentName name) {
+
+                }
+            }, Context.BIND_AUTO_CREATE);
         }
-        bindService(new Intent(RemoteControllerActivity.this, MusicNotificationListenerService.class), new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                MusicNotificationListenerService.RCBinder rcBinder = (MusicNotificationListenerService.RCBinder) service;
-                mNotificationListenerService = rcBinder.getService();
-                mNotificationListenerService.setExternalClientUpdateListener(RemoteControllerActivity.this);
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-
-            }
-        }, Context.BIND_AUTO_CREATE);
         //初始化MusicControlView相关
         String appPkg = SharedPreferenceUtil.getKeyString(Constants.MUSICPLAYER, null);
         if (TextUtils.isEmpty(appPkg)) {
@@ -182,4 +183,19 @@ public class RemoteControllerActivity extends Activity implements RemoteControll
             Toast.makeText(this, "应用未安装，启动失败", Toast.LENGTH_LONG).show();
         }
     }
+
+    /**
+     * 是否已经授予通知相关权限
+     *
+     * @param context，上下文对象
+     * @return
+     */
+    private boolean isNotificationListenerServiceEnabled(Context context) {
+        Set<String> packageNames = NotificationManagerCompat.getEnabledListenerPackages(context);
+        if (packageNames.contains(context.getPackageName())) {
+            return true;
+        }
+        return false;
+    }
 }
+
