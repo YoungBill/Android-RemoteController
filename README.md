@@ -1,7 +1,7 @@
 # AndroidRemoteController
 <br/>
 readme-中文
-===
+=
 <br/>
 AndroidRemoteController是一个远程控制第三方音乐播放器的项目。
 <br/>
@@ -16,7 +16,7 @@ AndroidRemoteController是一个远程控制第三方音乐播放器的项目。
 <br/>
 <br/>
 readme-en
-===
+=
 <br/>
 AndroidRemoteController Is a project to remotely control third-party music players.
 <br/>
@@ -31,5 +31,5 @@ Through the above knowledge point, we can get a variety of music information of 
 <br/>
 <br/>
 preview
-===
+=
 ![Alt text](Android-RemoteController/Screenshots/Screenshot_2018-01-07-14-23-41-900_com.example.baina.androidremotecontroller.png)
