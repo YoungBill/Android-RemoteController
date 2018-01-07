@@ -26,9 +26,9 @@ Through the above knowledge point, we can get a variety of music information of 
 ### playing 
 <img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="260" height="460"/><br/>
 ### pause
-<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="260" height="460"/><br/>    
+<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-35-305_com.example.baina.androidremotecontroller.png" width="260" height="460"/><br/>    
 ### change 
-<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="260" height="460"/><br/>  
+<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-41-900_com.example.baina.androidremotecontroller.png" width="260" height="460"/><br/>  
 ## 结束  
 
 
