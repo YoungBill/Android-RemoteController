@@ -23,13 +23,10 @@ Before we understand the project we need to find out two knowledge points:
 Through the above knowledge point, we can get a variety of music information of third-party music player App, and control the third-party music player.
 
 ## preview
-
 ### playing
 <img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="260" height="460"/>
-
-### pause
-<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-35-305_com.example.baina.androidremotecontroller.png" width="260" height="460/>  
-
-### change
-<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-35-305_com.example.baina.androidremotecontroller.png" width="260" height="460/>
+### playing
+<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="260" height="460"/>
+### playing
+<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="260" height="460"/>
 
