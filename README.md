@@ -1,5 +1,5 @@
 # AndroidRemoteController
-<br/>
+
 ## readme-中文
 <br/>
 AndroidRemoteController是一个远程控制第三方音乐播放器的项目。
@@ -11,9 +11,7 @@ AndroidRemoteController是一个远程控制第三方音乐播放器的项目。
 2、所有的音乐播放App，它们都会在通知栏有常驻的Notification来显示当前一些歌曲的信息，关于接收音乐信息的问题，这里指的是接收专辑、歌手专辑封面等等，那如何获取呢，一种方式是通过反射，但是普遍性比较差。在Android API 19中，谷歌为我们提供了RemoteController。
 <br/>
 通过以上知识点，我们就能拿到第三方音乐播放App的各种音乐信息，并且控制第三方音乐播放。
-<br/>
-<br/>
-<br/>
+
 ## readme-en 
 <br/>
 AndroidRemoteController Is a project to remotely control third-party music players.
@@ -26,9 +24,5 @@ Before we understand the project we need to find out two knowledge points:
 <br/>
 Through the above knowledge point, we can get a variety of music information of third-party music player App, and control the third-party music player.
 
-
-
 ## preview
 ![Alt text](Android-RemoteController/Screenshots/Screenshot_2018-01-07-14-23-41-900_com.example.baina.androidremotecontroller.png)
-
-## 目录
