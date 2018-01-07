@@ -23,4 +23,4 @@ Before we understand the project we need to find out two knowledge points:
 Through the above knowledge point, we can get a variety of music information of third-party music player App, and control the third-party music player.
 
 ## preview
-![Alt text](Android-RemoteController/Screenshots/Screenshot_2018-01-07-14-23-41-900_com.example.baina.androidremotecontroller.png)
+![Alt text](https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png)
