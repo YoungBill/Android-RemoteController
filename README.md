@@ -1,7 +1,6 @@
 # AndroidRemoteController
 
 ## readme-中文
-<br/>
 AndroidRemoteController是一个远程控制第三方音乐播放器的项目。
 <br/>
 在了解项目之前我们需要弄清楚2个知识点：
@@ -13,7 +12,6 @@ AndroidRemoteController是一个远程控制第三方音乐播放器的项目。
 通过以上知识点，我们就能拿到第三方音乐播放App的各种音乐信息，并且控制第三方音乐播放。
 
 ## readme-en 
-<br/>
 AndroidRemoteController Is a project to remotely control third-party music players.
 <br/>
 Before we understand the project we need to find out two knowledge points:
