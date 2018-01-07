@@ -24,5 +24,5 @@ Through the above knowledge point, we can get a variety of music information of 
 
 ## preview
 ![Alt text](https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png)
-<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="150" height="200" alt="图片描述文字"/>
+<img src="https://github.com/YoungBill/Android-RemoteController/blob/master/Screenshots/Screenshot_2018-01-07-14-23-24-904_com.example.baina.androidremotecontroller.png" width="260" height="460"/>
 
