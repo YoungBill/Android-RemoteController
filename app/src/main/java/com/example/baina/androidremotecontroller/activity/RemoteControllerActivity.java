@@ -115,6 +115,7 @@ public class RemoteControllerActivity extends Activity implements RemoteControll
                 public void onServiceConnected(ComponentName name, IBinder service) {
                     MusicNotificationListenerService.RCBinder rcBinder = (MusicNotificationListenerService.RCBinder) service;
                     mNotificationListenerService = rcBinder.getService();
+                    mNotificationListenerService.registerRemoteController();
                     mNotificationListenerService.setExternalClientUpdateListener(RemoteControllerActivity.this);
                 }
 

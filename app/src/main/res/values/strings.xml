@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidRemoteController</string>
+
+    <!--MusicControlView-->
+    <string name="grant_notifications_access">Please grant notifications the use of authority</string>
+    <string name="fail_startup_app">Application is not installed, startup failure</string>
 </resources>

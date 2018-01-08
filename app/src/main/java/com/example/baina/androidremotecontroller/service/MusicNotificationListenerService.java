@@ -25,12 +25,6 @@ public class MusicNotificationListenerService extends NotificationListenerServic
     private RemoteController.OnClientUpdateListener mExternalClientUpdateListener;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        registerRemoteController();
-    }
-
-    @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
     }
@@ -39,12 +33,12 @@ public class MusicNotificationListenerService extends NotificationListenerServic
         mExternalClientUpdateListener = externalClientUpdateListener;
     }
 
-    private void registerRemoteController() {
+    public void registerRemoteController() {
         mRemoteController = new RemoteController(this, this);
         boolean registered;
         try {
             registered = ((AudioManager) getSystemService(AUDIO_SERVICE)).registerRemoteController(mRemoteController);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | SecurityException e) {
             registered = false;
         }
         if (registered) {

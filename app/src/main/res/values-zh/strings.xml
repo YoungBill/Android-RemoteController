@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--MusicControlView-->
+    <string name="grant_notifications_access">请授予通知权限</string>
+    <string name="fail_startup_app">应用未安装，启动失败</string>
+</resources>

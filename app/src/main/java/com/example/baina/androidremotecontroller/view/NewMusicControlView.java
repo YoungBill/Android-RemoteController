@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 import android.media.RemoteController;
 import android.os.IBinder;
+import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -30,7 +31,7 @@ import com.example.baina.androidremotecontroller.service.MusicNotificationListen
 import com.example.baina.androidremotecontroller.utils.Constants;
 import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import java.util.Set;
 
 /**
  * Created by baina on 18-1-5.
@@ -88,6 +89,7 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
             public void onServiceConnected(ComponentName name, IBinder service) {
                 MusicNotificationListenerService.RCBinder rcBinder = (MusicNotificationListenerService.RCBinder) service;
                 mNotificationListenerService = rcBinder.getService();
+                mNotificationListenerService.registerRemoteController();
                 mNotificationListenerService.setExternalClientUpdateListener(mOnClientUpdateListener);
             }
 
@@ -107,7 +109,7 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
         super.onDetachedFromWindow();
         Log.d(TAG, "onDetachedFromWindow");
         //解绑通知相关service
-        mContext.unbindService(mServiceConnection);
+//        mContext.unbindService(mServiceConnection);
         mPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
@@ -140,7 +142,7 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
             public void onClick(View v) {
                 switch (mMusicControlState) {
                     case STATE_NOMUSICPLAYER:
-                        mContext.startActivity(new Intent("com.baina.allsupportaudioapp"));
+                        selectMusicPlayer();
                         break;
                     case STATE_NOMUSICDATA:
                     case STATE_MUSICDATA:
@@ -167,7 +169,7 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
             public void onClick(View v) {
                 switch (mMusicControlState) {
                     case STATE_NOMUSICPLAYER:
-                        mContext.startActivity(new Intent("com.baina.allsupportaudioapp"));
+                        selectMusicPlayer();
                         break;
                     case STATE_NOMUSICDATA:
                         String appPkg = SharedPreferenceUtil.getKeyString(Constants.MUSICPLAYER, null);
@@ -175,7 +177,11 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
                         break;
                     case STATE_MUSICDATA:
                         if (mNotificationListenerService != null) {
-                            mNotificationListenerService.sendMusicKeyEvent(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+                            //可能存在，正在播放音乐，并且此时本地有音乐信息，但是音乐app被用户杀死的情况，此时应该启动app
+                            if (!mNotificationListenerService.sendMusicKeyEvent(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE)) {
+                                String appPkg1 = SharedPreferenceUtil.getKeyString(Constants.MUSICPLAYER, null);
+                                startApp(appPkg1);
+                            }
                         }
                         break;
                 }
@@ -301,12 +307,35 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
         }
     }
 
+    private void selectMusicPlayer() {
+        if (!isNotificationListenerServiceEnabled(mContext)) {
+            mContext.startActivity(new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+            Toast.makeText(mContext, R.string.grant_notifications_access, Toast.LENGTH_SHORT).show();
+        } else {
+            mContext.startActivity(new Intent("com.baina.allsupportaudioapp"));
+        }
+    }
+
     private void startApp(String appPkg) {
         try {
             Intent intent = mContext.getPackageManager().getLaunchIntentForPackage(appPkg);
             mContext.startActivity(intent);
         } catch (Exception e) {
-            Toast.makeText(mContext, "应用未安装，启动失败", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, R.string.fail_startup_app, Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     * 是否已经授予通知相关权限
+     *
+     * @param context，上下文对象
+     * @return
+     */
+    private boolean isNotificationListenerServiceEnabled(Context context) {
+        Set<String> packageNames = NotificationManagerCompat.getEnabledListenerPackages(context);
+        if (packageNames.contains(context.getPackageName())) {
+            return true;
+        }
+        return false;
     }
 }
