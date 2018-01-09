@@ -132,8 +132,6 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
         mNextIb = findViewById(R.id.nextIb);
         //初始化点击事件
         initListener();
-        //初始化播放/暂停按钮状态信息
-        // TODO: 18-1-3 这里可以改进，目前只能得到是否在播放的状态信息，未来希望改进，能拿到所有正在操作的音乐信息
     }
 
     private void initListener() {
@@ -317,11 +315,16 @@ public class NewMusicControlView extends RelativeLayout implements SharedPrefere
     }
 
     private void startApp(String appPkg) {
-        try {
-            Intent intent = mContext.getPackageManager().getLaunchIntentForPackage(appPkg);
-            mContext.startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(mContext, R.string.fail_startup_app, Toast.LENGTH_LONG).show();
+        if (!isNotificationListenerServiceEnabled(mContext)) {
+            mContext.startActivity(new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+            Toast.makeText(mContext, R.string.grant_notifications_access, Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                Intent intent = mContext.getPackageManager().getLaunchIntentForPackage(appPkg);
+                mContext.startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(mContext, R.string.fail_startup_app, Toast.LENGTH_LONG).show();
+            }
         }
     }
 

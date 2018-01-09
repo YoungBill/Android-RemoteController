@@ -48,18 +48,6 @@ public class MusicControlView extends RelativeLayout {
         super(context, attrs);
     }
 
-    public void onCreate() {
-        mContext = getContext();
-        LayoutInflater.from(mContext).inflate(R.layout.layout_musiccontrol, this);
-        mMusicCoverIv = findViewById(R.id.musicCoverIv);
-        mMusicPlayerTv = findViewById(R.id.musicPlayerTv);
-        mMusicTitleTv = findViewById(R.id.musicTitleTv);
-        mMusicArtistTv = findViewById(R.id.musicArtistTv);
-        mPlayPauseIb = findViewById(R.id.playPauseIb);
-        mPreviousIb = findViewById(R.id.previousIb);
-        mNextIb = findViewById(R.id.nextIb);
-    }
-
     public void onCreate(final OnMusicControlClickListener musicControlClickListener) {
         mContext = getContext();
         LayoutInflater.from(mContext).inflate(R.layout.layout_musiccontrol, this);
@@ -73,13 +61,6 @@ public class MusicControlView extends RelativeLayout {
         mMusicControlClickListener = musicControlClickListener;
         //初始化点击事件
         initListener();
-        //初始化播放/暂停按钮状态信息
-        // TODO: 18-1-3 这里可以改进，目前只能得到是否在播放的状态信息，未来希望改进，能拿到所有正在操作的音乐信息
-//        if (((AudioManager) mContext.getSystemService(AUDIO_SERVICE)).isMusicActive()) {
-//            mPlayPauseIb.setBackgroundResource(R.mipmap.pause);
-//        } else {
-//            mPlayPauseIb.setBackgroundResource(R.mipmap.play);
-//        }
     }
 
     private void initListener() {
