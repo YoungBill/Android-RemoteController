@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller.utils;
+package com.baina.androidremotecontroller.utils;
 
 /**
  * Created by baina on 18-1-3.

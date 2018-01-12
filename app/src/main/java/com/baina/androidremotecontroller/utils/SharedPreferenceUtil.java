@@ -1,9 +1,9 @@
-package com.example.baina.androidremotecontroller.utils;
+package com.baina.androidremotecontroller.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.baina.androidremotecontroller.RemoteControllerApplication;
+import com.baina.androidremotecontroller.RemoteControllerApplication;
 
 public class SharedPreferenceUtil {
 

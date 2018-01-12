@@ -1,10 +1,10 @@
-package com.example.baina.androidremotecontroller.activity;
+package com.baina.androidremotecontroller.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.example.baina.androidremotecontroller.R;
+import com.baina.androidremotecontroller.R;
 
 /**
  * 测试高度集成音乐控制view的Activity

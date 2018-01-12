@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller.view;
+package com.baina.androidremotecontroller.view;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.baina.androidremotecontroller.R;
-import com.example.baina.androidremotecontroller.model.Music;
+import com.baina.androidremotecontroller.R;
+import com.baina.androidremotecontroller.model.Music;
 
 /**
  * Created by baina on 18-1-3.

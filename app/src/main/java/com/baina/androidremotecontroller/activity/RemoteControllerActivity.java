@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller.activity;
+package com.baina.androidremotecontroller.activity;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -19,12 +19,12 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
-import com.example.baina.androidremotecontroller.model.Music;
-import com.example.baina.androidremotecontroller.service.MusicNotificationListenerService;
-import com.example.baina.androidremotecontroller.R;
-import com.example.baina.androidremotecontroller.utils.Constants;
-import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
-import com.example.baina.androidremotecontroller.view.MusicControlView;
+import com.baina.androidremotecontroller.model.Music;
+import com.baina.androidremotecontroller.service.MusicNotificationListenerService;
+import com.baina.androidremotecontroller.R;
+import com.baina.androidremotecontroller.utils.Constants;
+import com.baina.androidremotecontroller.utils.SharedPreferenceUtil;
+import com.baina.androidremotecontroller.view.MusicControlView;
 
 import java.util.Set;
 

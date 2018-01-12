@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller;
+package com.baina.androidremotecontroller;
 
 import android.app.Application;
 import android.content.Context;

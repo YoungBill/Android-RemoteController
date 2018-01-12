@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller.model;
+package com.baina.androidremotecontroller.model;
 
 import android.graphics.Bitmap;
 

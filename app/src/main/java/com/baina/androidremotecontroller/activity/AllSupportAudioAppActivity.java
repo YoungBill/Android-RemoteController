@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller.activity;
+package com.baina.androidremotecontroller.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.baina.androidremotecontroller.model.AppInfo;
-import com.example.baina.androidremotecontroller.R;
-import com.example.baina.androidremotecontroller.adapter.SupportMusicPlayerAdapter;
-import com.example.baina.androidremotecontroller.utils.Constants;
-import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
+import com.baina.androidremotecontroller.model.AppInfo;
+import com.baina.androidremotecontroller.R;
+import com.baina.androidremotecontroller.adapter.SupportMusicPlayerAdapter;
+import com.baina.androidremotecontroller.utils.Constants;
+import com.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.List;

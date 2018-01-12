@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller;
+package com.baina.androidremotecontroller;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.baina.androidremotecontroller", appContext.getPackageName());
+        assertEquals("com.baina.androidremotecontroller", appContext.getPackageName());
     }
 }

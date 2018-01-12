@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller.service;
+package com.baina.androidremotecontroller.service;
 
 import android.content.Intent;
 import android.media.AudioManager;

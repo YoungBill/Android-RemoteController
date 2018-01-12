@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller.adapter;
+package com.baina.androidremotecontroller.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,10 +9,10 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.baina.androidremotecontroller.R;
-import com.example.baina.androidremotecontroller.model.AppInfo;
-import com.example.baina.androidremotecontroller.utils.Constants;
-import com.example.baina.androidremotecontroller.utils.SharedPreferenceUtil;
+import com.baina.androidremotecontroller.R;
+import com.baina.androidremotecontroller.model.AppInfo;
+import com.baina.androidremotecontroller.utils.Constants;
+import com.baina.androidremotecontroller.utils.SharedPreferenceUtil;
 
 import java.util.List;
 

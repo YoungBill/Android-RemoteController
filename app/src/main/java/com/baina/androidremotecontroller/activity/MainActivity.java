@@ -1,11 +1,11 @@
-package com.example.baina.androidremotecontroller.activity;
+package com.baina.androidremotecontroller.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.baina.androidremotecontroller.R;
+import com.baina.androidremotecontroller.R;
 
 public class MainActivity extends Activity {
 

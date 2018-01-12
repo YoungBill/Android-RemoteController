@@ -1,4 +1,4 @@
-package com.example.baina.androidremotecontroller;
+package com.baina.androidremotecontroller;
 
 import org.junit.Test;
 
